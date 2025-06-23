@@ -26,8 +26,8 @@ void oled_send_command(uint8_t cmd) {
 void oled_init(void) {
   Wire.begin();
   _delay_ms(50);
-  for (uint8_t i = 0; i < sizeof(oled_init_cmds); i++) {
-    uint8_t cmd = pgm_read_byte(&oled_init_cmds[i]);
+  for (uint8_t i = 0; i < sizeof(commands); i++) {
+    uint8_t cmd = pgm_read_byte(&commands[i]);
     oled_send_command(cmd);
   }
   oled_clear();

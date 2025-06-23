@@ -20,9 +20,11 @@ void oled_send_command(uint8_t cmd);
 
 extern uint8_t oled_buffer[OLED_WIDTH * OLED_HEIGHT / 8];
 
+// Arduino-friendly alias
+#define draw_pixel oled_draw_pixel
+
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-

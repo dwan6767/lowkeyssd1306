@@ -1,22 +1,16 @@
 #include <lowkeyoled.h>
 
-#define horizontal_offset 4
-#define OLED_ADDR 0x3C
-#define OLED_WIDTH 128
-#define OLED_HEIGHT 64
-
 uint16_t pre = 0;
 uint16_t now;
 uint8_t count = 0;
-uint8_t oled_buffer[OLED_WIDTH * OLED_HEIGHT / 8];
 
 void setup() {
   pinMode(2, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(2), Isr, FALLING);
 
-  clear_screen();
+  oled_clear();
   oled_init();
-  clear_screen();
+  oled_clear();
 
   flappy(3, 120);
   building1(0);
@@ -28,10 +22,10 @@ void loop() {
   static uint8_t y = 4;
 
   now = millis();
-  clear_screen();
+  oled_clear();
 
   if (!u) building1(0);
-  if (u)  building2(0);
+  else    building2(0);
 
   flappy(3 - 2 * count + y, y);
   oled_update();
