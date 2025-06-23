@@ -1,4 +1,5 @@
 #include "lowkeyoled.h"
+#include<Arduino.h>
 #include <Wire.h>
 #include <util/delay.h>
 #include <avr/pgmspace.h>
@@ -6,7 +7,7 @@
 
 #define H_OFFSET 4
 
-static const uint8_t commands[] PROGMEM = {
+static const uint8_t oled_init_cmds[] PROGMEM = {
   0xAE, 0xD5, 0x80, 0xA8, 0x3F,
   0xD3, 0x00, 0x40, 0x8D, 0x14,
   0x20, 0x00, 0xA1, 0xC8, 0xDA, 0x12,
@@ -26,8 +27,8 @@ void oled_send_command(uint8_t cmd) {
 void oled_init(void) {
   Wire.begin();
   _delay_ms(50);
-  for (uint8_t i = 0; i < sizeof(commands); i++) {
-    uint8_t cmd = pgm_read_byte(&commands[i]);
+  for (uint8_t i = 0; i < sizeof(oled_init_cmds); i++) {
+    uint8_t cmd = pgm_read_byte(&oled_init_cmds[i]);
     oled_send_command(cmd);
   }
   oled_clear();
@@ -64,4 +65,3 @@ void oled_draw_pixel(uint8_t x, uint8_t y, bool color) {
   else
     oled_buffer[index] &= ~bit;
 }
-

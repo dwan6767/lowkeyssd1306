@@ -11,7 +11,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 void oled_init(void);
 void oled_clear(void);
 void oled_update(void);
@@ -19,9 +18,6 @@ void oled_draw_pixel(uint8_t x, uint8_t y, bool color);
 void oled_send_command(uint8_t cmd);
 
 extern uint8_t oled_buffer[OLED_WIDTH * OLED_HEIGHT / 8];
-
-// Arduino-friendly alias
-#define draw_pixel oled_draw_pixel
 
 #ifdef __cplusplus
 }

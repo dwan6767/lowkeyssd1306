@@ -1,8 +1,14 @@
-#include <lowkeyoled.h>
+#include "lowkeyoled.h"
+
+#define horizontal_offset 4
+#define OLED_ADDR 0x3C
+#define OLED_WIDTH 128
+#define OLED_HEIGHT 64
 
 uint16_t pre = 0;
 uint16_t now;
 uint8_t count = 0;
+
 
 void setup() {
   pinMode(2, INPUT_PULLUP);
@@ -25,7 +31,7 @@ void loop() {
   oled_clear();
 
   if (!u) building1(0);
-  else    building2(0);
+  if (u)  building2(0);
 
   flappy(3 - 2 * count + y, y);
   oled_update();
@@ -49,17 +55,17 @@ void Isr() {
 void block(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2) {
   for (uint8_t i = x1; i < x2; i++) {
     for (uint8_t j = y1; j < y2; j++) {
-      draw_pixel(i, j, true);
+      oled_draw_pixel(i, j, true);
     }
   }
 }
 
 void flappy(uint8_t i, uint8_t j) {
-  draw_pixel(1 + j, 31 + i, true);
-  draw_pixel(2 + j, 30 + i, true);
-  draw_pixel(3 + j, 29 + i, true);
-  draw_pixel(2 + j, 28 + i, true);
-  draw_pixel(1 + j, 27 + i, true);
+  oled_draw_pixel(1 + j, 31 + i, true);
+  oled_draw_pixel(2 + j, 30 + i, true);
+  oled_draw_pixel(3 + j, 29 + i, true);
+  oled_draw_pixel(2 + j, 28 + i, true);
+ oled_draw_pixel(1 + j, 27 + i, true);
 }
 
 void building1(uint8_t i) {
