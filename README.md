@@ -4,6 +4,7 @@ A minimal Diy oled display(ssd1306)driver.
 Uses main 1024 bytes of RAM as frame buffer; lower flash usage
 
 Compatible with Avr Microcontroller and ssd1306 oled display
+Hardware should atleast have 1.5 kbytes of RAM for proper operation 
 # functionality
 For users it has oled_clear(), oled_update(); oled_draw_pixel() functions 
 
