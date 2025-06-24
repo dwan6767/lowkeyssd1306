@@ -16,7 +16,8 @@ oled_draw_pixel() : draws a single pixel in a specific coordinate
 * It has no text support ,everything the user has to do from scratch 
 
 * While displaying static stuff it is good to store that in PROGMEM rather than RAM
-#examples
+
+# examples
    There is a Comprehensive example of a flappy-bird game in examples 
  Chill bro ..
 
