@@ -19,7 +19,7 @@ oled_draw_pixel() : draws a single pixel in a specific coordinate
 
 # examples
    There is a Comprehensive example of a flappy-bird game in examples 
- Chill bro ..
+ 
 
 ## Usage
 
