@@ -7,10 +7,7 @@
 // hardware needed avr microcontroller , ssd1306 oled screen , push button , wires ,debouncing capacitor(100nf) etc
 #include "lowkeyoled.h"
 
-#define horizontal_offset 4
-#define OLED_ADDR 0x3C
-#define OLED_WIDTH 128
-#define OLED_HEIGHT 64
+
 
 uint16_t pre = 0;   // i bet no one can play more than one minute all these to save some important RAM bro!you can change it it 32 bit if you are pro
 uint16_t now;
