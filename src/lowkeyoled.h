@@ -1,4 +1,4 @@
-#ifndef LOWKEYOLED_H
+t#ifndef LOWKEYOLED_H
 #define LOWKEYOLED_H
 
 #include <stdint.h>
@@ -18,7 +18,7 @@ void oled_draw_pixel(uint8_t x, uint8_t y, bool color);
 void oled_send_command(uint8_t cmd);
 
 extern uint8_t oled_buffer[OLED_WIDTH * OLED_HEIGHT / 8];
-
+extern uint8_t h_offset;
 #ifdef __cplusplus
 }
 #endif
