@@ -12,7 +12,7 @@
 #include <avr/pgmspace.h>
 #include <string.h>
 
-#define H_OFFSET 4  // came due some faulty hardware may not be in your case so change it by assinging it a different value
+uint8_t h_offset=4;  // came due some faulty hardware may not be in your case so change it by assinging it a different value
 
 static const uint8_t oled_init_cmds[] PROGMEM = {
   0xAE, 0xD5, 0x80, 0xA8, 0x3F,
@@ -65,7 +65,7 @@ void oled_update(void) {
 //the ssd 1306 driver uses this kind of addressing modes for their data sending , they use 64/8 =8 pages , in this snippet they address pages by these fashion then after addressing , switched to data mode then it will be easy for us to send the data from the buffer , well i2c hardware limitation has 16bytes (2pages fair enough) thus the infromation goes to their RAM 
 void oled_draw_pixel(uint8_t x, uint8_t y, bool color) {
   if (x >= OLED_WIDTH || y >= OLED_HEIGHT) return;
-  uint16_t index = x + (y / 8) * OLED_WIDTH + H_OFFSET;
+  uint16_t index = x + (y / 8) * OLED_WIDTH + h_offset;
   uint8_t bit = 1 << (y % 8);
   if (color)
     oled_buffer[index] |= bit;
