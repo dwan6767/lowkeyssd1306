@@ -27,7 +27,7 @@ oled_draw_pixel() : draws a single pixel in a specific coordinate
 
 ```c
 #include <lowkeyoled.h>
-
+uint8_t h_offset=2;
 void setup() {
   oled_init();
   oled_clear();
